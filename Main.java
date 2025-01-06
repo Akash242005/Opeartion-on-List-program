@@ -6,11 +6,14 @@ public class Main{
         System.out.println("=========================OPERATION IN LIST=======================================");
         while(true)
         {
+            System.out.println("****************************************************");
+            System.out.println(" ");
             System.out.println("1. Add element");
             System.out.println("2. Remove element");
             System.out.println("3. Display the list");
             System.out.println("4. Sort the list");
-            System.out.println("5. Exit");
+            System.out.println("5. Clear all the elements");
+            System.out.println("6. Exit");
             System.out.print("Enter the choice of operation : ");
             int choice = sc.nextInt();
             if(choice==1)
@@ -23,11 +26,17 @@ public class Main{
                     list.add(sc.nextInt());
                     System.out.println("The element added succesfully : "+list.get(i));
                 }
+                System.out.println(" ");
             }
             else if(choice == 2)
             {
                 while(true)
                 {
+                    if(list.isEmpty())
+                    {
+                        System.out.println("The list is empty and no elements to Remove!!!");
+                        break;
+                    }
                     System.out.println("Choices to remove the element");
                     System.out.println("1. Delete by index.");
                     System.out.println("2. Delete by value.");
@@ -65,6 +74,7 @@ public class Main{
                         System.out.println("Enter the valid choice to remove element");
                     }
                 }
+                System.out.println(" ");
             }
             else if(choice == 3)
             {
@@ -75,11 +85,17 @@ public class Main{
                 else{
                     System.out.println("The List is Empty");
                 }
+                System.out.println(" ");
             }
             else if(choice ==4)
             {
                 while(true)
                 {
+                    if(list.isEmpty())
+                    {
+                        System.out.println("The list is empty and no elements to sort");
+                        break;
+                    }
                     System.out.println("The Order's Available to sort : ");
                     System.out.println("1. Ascending Order");
                     System.out.println("2. Descending Order");
@@ -87,16 +103,14 @@ public class Main{
                     int so = sc.nextInt();
                     if(so == 1)
                     {
-                        List<Integer> temp = new ArrayList<>();
-                        temp = list;
+                        List<Integer> temp = new ArrayList<>(list);
                         Collections.sort(temp);
                         System.out.println("The list after sorting in ascending order is : "+(temp));
                         break;
                     }
                     else if(so == 2)
                     {
-                        List<Integer> temp = new ArrayList<>();
-                        temp = list;
+                        List<Integer> temp = new ArrayList<>(list);
                         temp.sort(Comparator.reverseOrder());
                         System.out.println("The list after sorting in descending order is : "+(temp));
                         break;
@@ -105,8 +119,16 @@ public class Main{
                         System.out.println("Enter the valid choice ");
                     }
                 }
+                System.out.println(" ");
             }
-            else if(choice == 5)
+            else if(choice==5)
+            {
+                list.clear();
+                System.out.println("The elemets in the list is cleared");
+                System.out.println("The List is empty : "+list.isEmpty());
+                System.out.println(" ");
+            }
+            else if(choice == 6)
             {
                 System.out.println("The operations on the list are Over!!!!!");
                 break;
@@ -114,6 +136,7 @@ public class Main{
             else
             {
                 System.out.println("Enter the valid choice of operation");
+                System.out.println(" ");
             }
         }
     }
